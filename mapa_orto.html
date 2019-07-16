@@ -29,13 +29,11 @@
     <div id="map"></div>
     <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script>
-    var map = L.map('map').setView([41.28514,-7.74102], 26);
+    var map = L.map('map').setView([41.28514,-7.74102], 18);
 
-    googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-    maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
-    });
-    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
     var wmsLayer= L.tileLayer.wms("http://127.0.0.1:8080/geoserver/data_reveal/wms", {
         layers: 'data_reveal:Orthophotomosaic',
         format: 'image/png',
